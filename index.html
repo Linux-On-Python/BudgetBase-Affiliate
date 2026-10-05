@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetBase - Curated Temu Finds</title>
+
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top bar -->
+    <div class="announcement-bar">
+        ⚡ Exclusive product catalog and updated deals
+    </div>
+
+    <!-- Header -->
+    <header class="hero-header">
+
+        <div class="header-container">
+
+            <div class="header-top">
+                <a href="#" class="brand-logo">BUDGET<span>BASE</span></a>
+
+                <!-- Language Switcher -->
+                <div class="lang-switch">
+                    <a href="index.html" class="active">EN</a>
+                    <a href="index-es.html">ES</a>
+                </div>
+            </div>
+
+            <p class="site-description">
+                Explore our curated collection of diverse items and accessories. Find your favorite styles and buy them directly on Temu.
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- Search box -->
+    <section class="control-panel">
+
+        <div class="panel-container">
+
+            <div class="search-box">
+
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+
+                <input 
+                    type="text"
+                    id="search-Input"
+                    placeholder="Search for items or accessories..."
+                    oninput="filterProducts()"
+                >
+                <button id="clearBtn" onclick="clearSearch()" class="clear-btn" style="display: none;">×</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Main Catalog -->
+    <main class="catalog-container">
+
+        <!-- Product Grid Will Render Here via JS -->
+        <div id="product-grid" class="product-grid"></div>
+
+        <!-- No Results State -->
+        <div id="loading" class="no-results" style="display: none;">
+
+            <p>🔍 No items found matching your search.</p>
+
+            <button onclick="clearSearch()" class="btn-reset">Show all products</button>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>© 2026 BUDGETBASE. All rights reserved.</p>
+
+    </footer>
+
+    <!-- JS Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>

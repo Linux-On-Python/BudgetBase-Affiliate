@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetBase - Hallazgos Seleccionados de Temu</title>
+
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Barra de anuncios -->
+    <div class="announcement-bar">
+        ⚡ Catálogo exclusivo de productos y ofertas actualizadas
+    </div>
+
+    <!-- Encabezado -->
+    <header class="hero-header">
+
+        <div class="header-container">
+
+            <div class="header-top">
+                <a href="#" class="brand-logo">BUDGET<span>BASE</span></a>
+
+                <!-- Cambiador de idioma -->
+                <div class="lang-switch">
+                    <a href="index.html">EN</a>
+                    <a href="index-es.html" class="active">ES</a>
+                </div>
+            </div>
+
+            <p class="site-description">
+                Explora nuestra colección seleccionada de artículos y accesorios variados. Encuentra tus estilos favoritos y cómpralos directamente en Temu.
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- Panel de control / Búsqueda -->
+    <section class="control-panel">
+
+        <div class="panel-container">
+
+            <div class="search-box">
+
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+
+                <input 
+                    type="text"
+                    id="search-Input"
+                    placeholder="Buscar artículos o accesorios..."
+                    oninput="filterProducts()"
+                >
+                <button id="clearBtn" onclick="clearSearch()" class="clear-btn" style="display: none;">×</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Catálogo Principal -->
+    <main class="catalog-container">
+
+        <!-- El grid de productos se renderizará aquí mediante JS -->
+        <div id="product-grid" class="product-grid"></div>
+
+        <!-- Estado de Sin Resultados -->
+        <div id="loading" class="no-results" style="display: none;">
+
+            <p>🔍 No se encontraron artículos que coincidan con tu búsqueda.</p>
+
+            <button onclick="clearSearch()" class="btn-reset">Mostrar todos los productos</button>
+
+        </div>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+
+        <p>© 2026 BUDGETBASE. Todos los derechos reservados.</p>
+
+    </footer>
+
+    <!-- JS Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
