@@ -1,3 +1,8 @@
+/* =========================================================
+   BUDGETBASE
+   Palette: vermilion and sage on warm paper tones.
+   ========================================================= */
+
 :root {
   --accent: #C4472B;
   --accent-hover: #A63A22;
@@ -833,5 +838,116 @@ input:focus-visible {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* =========================================================
+   Cookie banner (consent.js)
+   ========================================================= */
+.cookie-banner {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 32px);
+  max-width: 760px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 22px;
+  background: var(--bg-white);
+  border: 1px solid #D9D1C4;
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  box-shadow: 0 16px 40px rgba(38, 55, 53, 0.22);
+}
+
+.cookie-text {
+  flex: 1;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #46514B;
+}
+
+.cookie-text a {
+  color: var(--accent-hover);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Both buttons are the same size so declining is as easy as accepting */
+.cookie-btn {
+  min-width: 104px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  font-family: var(--font-main);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cookie-btn-accept {
+  background: var(--ink);
+  color: #FFFCF6;
+}
+
+.cookie-btn-accept:hover {
+  background: var(--sage-dark);
+  border-color: var(--sage-dark);
+}
+
+.cookie-btn-decline {
+  background: var(--bg-white);
+  color: var(--ink);
+}
+
+.cookie-btn-decline:hover {
+  background: #F0EAE0;
+}
+
+/* "Cookie settings" link in the footer, styled like the other footer links */
+.cookie-settings-link {
+  background: none;
+  border: none;
+  font-family: var(--font-main);
+  font-size: inherit;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 7px 4px;
+  cursor: pointer;
+}
+
+.cookie-settings-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .cookie-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .cookie-actions {
+    width: 100%;
+  }
+
+  .cookie-btn {
+    flex: 1;
   }
 }
