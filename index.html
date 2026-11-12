@@ -3,18 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BudgetBase - Curated Temu Finds</title>
+    <title>BudgetBase - Curated Temu Finds for Home, Gifts &amp; Fashion</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RP24BGKNX"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- SEO -->
+    <meta name="description" content="Curated Temu finds for home &amp; kitchen, gifts, fashion, beauty tools and gaming. Browse by category and buy directly on Temu.">
+    <link rel="canonical" href="https://linux-on-python.github.io/BudgetBase-Affiliate/">
+    <link rel="alternate" hreflang="en" href="https://linux-on-python.github.io/BudgetBase-Affiliate/">
+    <link rel="alternate" hreflang="es" href="https://linux-on-python.github.io/BudgetBase-Affiliate/index-es.html">
+    <link rel="alternate" hreflang="x-default" href="https://linux-on-python.github.io/BudgetBase-Affiliate/">
 
-    gtag('config', 'G-3RP24BGKNX');
-    </script>
-    
+    <!-- Open Graph (previews when the link is shared) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BudgetBase">
+    <meta property="og:title" content="BudgetBase - Curated Temu Finds">
+    <meta property="og:description" content="Home &amp; kitchen, gifts, fashion, beauty tools and gaming finds from Temu, all in one place.">
+    <meta property="og:url" content="https://linux-on-python.github.io/BudgetBase-Affiliate/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <!-- Add later: <meta property="og:image" content="https://linux-on-python.github.io/BudgetBase-Affiliate/preview.jpg"> -->
+
+    <!-- Pinterest domain verification (paste your code here when Pinterest gives it to you) -->
+    <!-- <meta name="p:domain_verify" content="YOUR_PINTEREST_CODE"> -->
+
+    <!-- Google Analytics will be added here later -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
+
+    <!-- Google Fonts (DM Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- CSS style -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -32,22 +52,28 @@
         <div class="header-container">
 
             <div class="header-top">
-                <a href="index.html" class="brand-logo">BUDGET<span>BASE</span></a>
+                <a href="index.html" class="brand-logo"><img src="img/BudgetBase Orbital Badge Logo.png" alt="BudgetBase" width="140" height="140"></a>
 
                 <!-- Language Switcher -->
                 <div class="lang-switch">
-                    <a href="index.html" class="active">EN</a>
-                    <a href="index-es.html">ES</a>
+                    <a href="index.html" class="active" hreflang="en">EN</a>
+                    <a href="index-es.html" hreflang="es">ES</a>
                 </div>
             </div>
 
-            <p class="site-description">
-                Explore our curated collection of diverse items and accessories. Find your favorite styles and buy them directly on Temu.
-            </p>
+            <h1 class="site-description">
+                Curated Temu finds for home, gifts, fashion, beauty and gaming. Browse by category and buy directly on Temu.
+            </h1>
 
         </div>
 
     </header>
+
+    <!-- Affiliate disclosure -->
+    <div class="disclosure" role="note">
+        <strong>Affiliate disclosure:</strong> BudgetBase earns a commission when you buy through our links, at no extra cost to you. Check the final price on Temu.
+        <a href="about.html#disclosure">Learn more</a>
+    </div>
 
     <!-- Search box -->
     <section class="control-panel">
@@ -56,18 +82,20 @@
 
             <div class="search-box">
 
-                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
 
-                <input 
+                <input
                     type="text"
                     id="search-Input"
-                    placeholder="Search for items or accessories..."
+                    placeholder="Search for products or categories..."
+                    aria-label="Search products"
+                    autocomplete="off"
                     oninput="filterProducts()"
                 >
-                <button id="clearBtn" onclick="clearSearch()" class="clear-btn" style="display: none;">×</button>
+                <button id="clearBtn" onclick="clearSearch()" class="clear-btn" style="display: none;" aria-label="Clear search">×</button>
 
             </div>
 
@@ -78,7 +106,7 @@
     <!-- Main Catalog -->
     <main class="catalog-container">
 
-        <!-- Product Grid Will Render Here via JS -->
+        <!-- Category buttons and product grid are rendered here via JS -->
         <div id="product-grid" class="product-grid"></div>
 
         <!-- No Results State -->
@@ -95,6 +123,16 @@
     <!-- Footer -->
     <footer class="footer">
 
+        <nav class="footer-links" aria-label="Footer">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+
+        <p class="footer-note">
+            BudgetBase is an independent affiliate website. It is not owned or operated by Temu. We may earn a commission from purchases made through our links, at no extra cost to you.
+        </p>
+
         <p>© 2026 BUDGETBASE. All rights reserved.</p>
 
     </footer>
@@ -104,4 +142,3 @@
 
 </body>
 </html>
-
