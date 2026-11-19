@@ -4,9 +4,8 @@
 // after the visitor clicks Accept. If the visitor clicks Decline,
 // nothing from Google loads.
 // Put this file in the same folder as your HTML files and add
-//   <script src="consent.js"></script>
-// inside the <head> of every page (this replaces the old Analytics code).
 // =========================================================
+
 
 // 1) YOUR GOOGLE TAG MANAGER CONTAINER ID (it looks like GTM-ABC1234)
 const GTM_ID = "GTM-M4ZQL6L2";
