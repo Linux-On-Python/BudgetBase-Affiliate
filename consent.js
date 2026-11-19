@@ -1,14 +1,15 @@
 // =========================================================
-// BUDGETBASE - cookie banner + Google Analytics
-// Google Analytics is loaded ONLY after the visitor clicks Accept.
-// If the visitor clicks Decline, nothing from Google Analytics loads.
+// BUDGETBASE - cookie banner + Google Tag Manager
+// Google Tag Manager (and the Analytics tag inside it) is loaded ONLY
+// after the visitor clicks Accept. If the visitor clicks Decline,
+// nothing from Google loads.
 // Put this file in the same folder as your HTML files and add
 //   <script src="consent.js"></script>
 // inside the <head> of every page (this replaces the old Analytics code).
 // =========================================================
 
-// 1) GOOGLE ANALYTICS 
-const GA_ID = "G-2EFX2G5P3M";
+// 1) YOUR GOOGLE TAG MANAGER CONTAINER ID (it looks like GTM-ABC1234)
+const GTM_ID = "GTM-M4ZQL6L2";
 
 // ----- Settings -----
 const CONSENT_KEY = "budgetbase_cookie_choice";
@@ -59,40 +60,41 @@ function saveChoice(value) {
   }
 }
 
-// ----- Google Analytics -----
+// ----- Google Tag Manager -----
 let analyticsLoaded = false;
 
 function analyticsIdIsSet() {
-  // Valid IDs look like G-ABC123XYZ9; the placeholder contains a run of X's
-  return /^G-[A-Z0-9]{4,}$/i.test(GA_ID) && GA_ID.indexOf("XXXX") === -1;
+  // Valid IDs look like GTM-ABC1234; a placeholder contains a run of X's
+  return /^GTM-[A-Z0-9]{4,}$/i.test(GTM_ID) && GTM_ID.indexOf("XXXX") === -1;
 }
 
 function loadAnalytics() {
   if (analyticsLoaded) return;
   if (!analyticsIdIsSet()) {
-    console.warn("consent.js: set your Google Analytics ID in GA_ID (top of the file).");
+    console.warn("consent.js: set your Tag Manager ID in GTM_ID (top of the file).");
     return;
   }
   analyticsLoaded = true;
-  window["ga-disable-" + GA_ID] = false;
 
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
-  document.head.appendChild(script);
-
+  // Same setup Google gives for this tag (Admin > Data streams > Installation instructions)
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { window.dataLayer.push(arguments); };
   window.gtag("js", new Date());
-  window.gtag("config", GA_ID);
+  window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(GTM_ID);
+  document.head.appendChild(script);
 }
 
-// Used when someone declines after having accepted before
+// Used when someone declines after having accepted before.
+// Tag Manager cannot be unloaded from a page that already loaded it,
+// so tracking fully stops on the visitor's next page load.
 function stopAnalytics() {
-  window["ga-disable-" + GA_ID] = true;
   document.cookie.split(";").forEach(function (cookie) {
     const name = cookie.split("=")[0].trim();
-    if (name === "_ga" || name === "_gid" || name.indexOf("_ga_") === 0) {
+    if (name === "_ga" || name === "_gid" || name.indexOf("_ga_") === 0 || name.indexOf("_gat") === 0) {
       const host = window.location.hostname;
       const expired = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
       document.cookie = expired;
